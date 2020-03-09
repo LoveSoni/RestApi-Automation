@@ -57,4 +57,15 @@ public class GetBDDApi {
                 .and()
                 .body("MRData.limit",equalTo("30"));
     }
+
+    @Test
+    public void queryParameterExample(){
+        baseURI = "https://reqres.in";
+        given().log().all()
+                .param("page","2").log().all()
+                .when().log().all()
+                .get("/api/users")
+                .then().log().all()
+        .body("data[0].email",equalTo("michael.lawson@reqres.in"));
+    }
 }
