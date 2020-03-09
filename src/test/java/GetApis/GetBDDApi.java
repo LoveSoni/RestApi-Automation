@@ -2,6 +2,7 @@ package GetApis;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
@@ -68,4 +69,29 @@ public class GetBDDApi {
                 .then().log().all()
         .body("data[0].email",equalTo("michael.lawson@reqres.in"));
     }
+
+    @DataProvider
+    public Object[][] getData(){
+        Object[][] testData = {
+                {"page1",1},
+                {"page2",2},
+                {"page3",3},
+                {"page4",4},
+                {"page5",5}
+        };
+        return testData;
+    }
+
+    @Test(dataProvider ="getData")
+    public void useDataProvider(String pageNumber,int page){
+        baseURI = "https://reqres.in";
+        given().log().all()
+                .param("page",page).log().all()
+                .when().log().all()
+                .get("/api/users")
+                .then().log().all()
+                .assertThat()
+                .body("page",equalTo(page));
+    }
 }
+
