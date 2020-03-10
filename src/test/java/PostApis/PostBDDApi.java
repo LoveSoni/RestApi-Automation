@@ -36,4 +36,5 @@ public class PostBDDApi {
         Response response = requestSpecification.post("/public-api/users");
         System.out.println(response.body().asString());
     }
+
 }
