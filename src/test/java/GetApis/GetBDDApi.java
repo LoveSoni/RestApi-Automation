@@ -1,5 +1,4 @@
 package GetApis;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
