@@ -14,12 +14,5 @@ public class ResponseSpecBuilderTest {
     // content type
     @Test
     public void responseSpecification() {
-        RestAssured.baseURI = "https://gorest.co.in";
-        RequestSpecification requestSpecification = RestAssured.given();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("email","tim@gmail.com");
-        requestSpecification.auth().preemptive().oauth2("V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzbo");
-        Response response = requestSpecification.post("/public-api/users");
-        System.out.println(response.prettyPrint());
     }
 }
