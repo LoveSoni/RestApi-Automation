@@ -18,6 +18,6 @@ public class ValidateSchema {
         requestSpecification.body(new File(System.getProperty("user.dir")+"/src/test/java/schemaValidation/body.json"));
         Response response = requestSpecification.post("/booking");
         System.out.println(response.body().asString());
-        response.then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("validateSchema.json"));
+        response.then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("jsons/validateSchema.json"));
     }
 }
