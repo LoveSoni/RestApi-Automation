@@ -1,5 +1,6 @@
 package Authentications;
 import io.restassured.RestAssured;
+import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
 import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
@@ -78,5 +79,29 @@ public class AuthApis {
                 .oauth2("V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzbo");
         Response response = request.get("https://gorest.co.in");
       System.out.println("Print entire JsonPath :"+response.prettyPrint());
+    }
+
+    @Test
+    public void digestAuthentication(){
+        baseURI = "https://the-internet.herokuapp.com/basic_auth";
+        given()
+                .auth()
+                .digest("admin","admin")
+                .when().log().all()
+                .get()
+                .then().log().all()
+                .statusCode(200);
+    }
+
+    @Test
+    public void formAuthentication(){
+        baseURI = "https://www.crmpro.com/system/authenticate.cfm";
+        given().log().all()
+                .auth()
+                .form("admin","admin",new FormAuthConfig("https://www.crmpro.com/system/authenticate.cfm", "username","password"))
+                .when().log().all()
+                .get()
+                .then().log().all()
+                .statusCode(200);
     }
 }
