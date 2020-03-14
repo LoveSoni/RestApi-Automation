@@ -3,12 +3,12 @@ package POJO;
 public class UserPojo {
     private String firstname;
     private String lastname;
-    private String totalprice;
-    private String depositpaid;
+    private int totalprice;
+    private boolean depositpaid;
     private String additionalneeds;
     private BookingPojo bookingdates;
 
-    public UserPojo(String firstname, String lastname, String totalprice, String depositpaid, String additionalneeds, BookingPojo bookingdates) {
+    public UserPojo(String firstname, String lastname, int totalprice, boolean depositpaid , BookingPojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
@@ -41,19 +41,19 @@ public class UserPojo {
         this.lastname = lastname;
     }
 
-    public String getTotalprice() {
+    public int getTotalprice() {
         return totalprice;
     }
 
-    public void setTotalprice(String totalprice) {
+    public void setTotalprice(int totalprice) {
         this.totalprice = totalprice;
     }
 
-    public String getDepositpaid() {
+    public boolean getDepositpaid() {
         return depositpaid;
     }
 
-    public void setDepositpaid(String depositpaid) {
+    public void setDepositpaid(boolean depositpaid) {
         this.depositpaid = depositpaid;
     }
 
