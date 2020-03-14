@@ -3,6 +3,7 @@ package XmlParsing;
 import static  io.restassured.RestAssured.*;
 
 import io.restassured.http.ContentType;
+import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -19,7 +20,8 @@ public class XmlParse {
                 .get("/public-api/users");
        System.out.println("Status code :"+response.getStatusCode());
        System.out.println("XML Response :"+response.body().asString());
-
+       XmlPath xmlPath = response.body().xmlPath();
+       System.out.println("Parse xml response"+xmlPath.get("response._meta.rateLimit.remaining"));
 
     }
 }
