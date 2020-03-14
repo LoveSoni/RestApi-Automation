@@ -6,13 +6,23 @@ public class UserPojo {
     private String totalprice;
     private String depositpaid;
     private String additionalneeds;
+    private BookingPojo bookingdates;
 
-    public UserPojo(String firstname, String lastname, String totalprice, String depositpaid, String additionalneeds) {
+    public UserPojo(String firstname, String lastname, String totalprice, String depositpaid, String additionalneeds, BookingPojo bookingdates) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
         this.additionalneeds = additionalneeds;
+        this.bookingdates = bookingdates;
+    }
+
+    public BookingPojo getBookingdates() {
+        return bookingdates;
+    }
+
+    public void setBookingdates(BookingPojo bookingdates) {
+        this.bookingdates = bookingdates;
     }
 
     public String getFirstname() {
