@@ -17,7 +17,7 @@ public class Api {
 
     private JSONObject requestJson;
 
-    public Api(String baseUrl,String httpMethod,String path, Map<String,String> queryParams, Map<String,String> headers,)
+    public Api(String baseUrl,String httpMethod,String path, Map<String,String> queryParams, Map<String,String> headers)
     {
         this.baseUrl = baseUrl;
         this.httpMethod = httpMethod;
