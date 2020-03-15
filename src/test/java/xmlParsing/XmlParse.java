@@ -1,8 +1,7 @@
-package XmlParsing;
+package xmlParsing;
 
 import static  io.restassured.RestAssured.*;
 
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;

@@ -1,16 +1,12 @@
-package Authentications;
+package authentications;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
-import io.restassured.http.ContentType;
-import io.restassured.http.Headers;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import static io.restassured.RestAssured.*;
-import static  org.hamcrest.Matchers.*;
 
 public class AuthApis {
     //basic auth - username and password

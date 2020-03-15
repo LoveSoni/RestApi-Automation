@@ -1,4 +1,4 @@
-package POJO;
+package pojo;
 
 public class UserPojo {
     private String firstname;

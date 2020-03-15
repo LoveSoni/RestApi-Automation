@@ -1,4 +1,4 @@
-package POJO;
+package pojo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;

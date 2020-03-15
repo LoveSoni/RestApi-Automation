@@ -1,4 +1,4 @@
-package POJO;
+package pojo;
 
 public class BookingPojo {
     private String checkin;

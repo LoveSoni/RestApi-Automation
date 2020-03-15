@@ -1,4 +1,4 @@
-package PutDelApis;
+package putDelApis;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

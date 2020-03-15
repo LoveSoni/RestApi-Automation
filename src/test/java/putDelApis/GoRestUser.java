@@ -1,4 +1,4 @@
-package PutDelApis;
+package putDelApis;
 
 public class GoRestUser {
     private String email;
