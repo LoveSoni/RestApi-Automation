@@ -17,11 +17,27 @@ public class Api {
 
     private JSONObject requestJson;
 
-    public Api(String httpMethod, String baseUrl, String path, Map<String, String> queryParams, Map<String, String> headers, JSONObject requestJson) {
+    public Api(String baseUrl, String httpMethod, String path, Map<String, String> queryParams, Map<String, String> headers, JSONObject requestJson) {
         this.httpMethod = httpMethod;
         this.baseUrl = baseUrl;
         this.path = path;
         this.queryParams = queryParams;
+        this.headers = headers;
+        this.requestJson = requestJson;
+    }
+
+    public Api(String baseUrl,String httpMethod,String path, Map<String,String> headers)
+    {
+        this.baseUrl = baseUrl;
+        this.httpMethod = httpMethod;
+        this.path = path;
+        this.headers = headers;
+    }
+
+    public Api(String baseUrl,String httpMethod, String path, Map<String,String> headers,JSONObject requestJson){
+        this.baseUrl = baseUrl;
+        this.httpMethod = httpMethod;
+        this.path = path;
         this.headers = headers;
         this.requestJson = requestJson;
     }
