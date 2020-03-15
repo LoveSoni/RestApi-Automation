@@ -20,7 +20,8 @@ public class RestClient {
     {
         setBaseUri(api);
         RequestSpecification reqest =  getRequest(api);
-        Response respose = getResponse(api,reqest);
+        Response response = getResponse(api,reqest);
+        return response;
     }
 
     public void setBaseUri(Api api){
