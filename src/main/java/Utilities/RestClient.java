@@ -33,8 +33,10 @@ public class RestClient {
     public RequestSpecification getRequest(Api api){
         String httpMethod = api.getHttpMethod();
         RequestSpecification request = RestAssured.given().log().all();
+        setHeaders(api,request);
+        setQueryParams(api,request);
         if(httpMethod.equalsIgnoreCase("get")){
-
+            request.get()
         }else if(httpMethod.equalsIgnoreCase("post")){
 
         }

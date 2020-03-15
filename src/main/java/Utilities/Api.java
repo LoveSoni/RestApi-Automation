@@ -9,15 +9,18 @@ public class Api {
 
     private String baseUrl;
 
+    private String path;
+
     private Map<String,String> queryParams;
 
     private Map<String,String> headers;
 
     private JSONObject requestJson;
 
-    public Api(String httpMethod, String baseUrl, Map<String, String> queryParams, Map<String, String> headers, JSONObject requestJson) {
+    public Api(String httpMethod, String baseUrl, String path, Map<String, String> queryParams, Map<String, String> headers, JSONObject requestJson) {
         this.httpMethod = httpMethod;
         this.baseUrl = baseUrl;
+        this.path = path;
         this.queryParams = queryParams;
         this.headers = headers;
         this.requestJson = requestJson;
@@ -35,8 +38,16 @@ public class Api {
         return baseUrl;
     }
 
+    public String getPath(){
+        return path;
+    }
+
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    public void setPath(String path){
+        this.path = path;
     }
 
     public Map<String, String> getQueryParams() {
