@@ -50,7 +50,7 @@ public class RestClient {
         else if(httpMethod.equalsIgnoreCase("del")){
             response = request.delete(path);
         }
-        return response;
+           return response;
     }
 
     public void setHeaders(Api api,RequestSpecification requestSpecification){
@@ -69,5 +69,8 @@ public class RestClient {
           return  response.body().jsonPath();
     }
 
+    public int getStatusCode(Response response){
+        return response.getStatusCode();
+    }
 
 }

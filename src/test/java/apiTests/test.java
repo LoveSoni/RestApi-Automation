@@ -2,6 +2,7 @@ package apiTests;
 
 import Utilities.Api;
 import Utilities.RestClient;
+import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -25,6 +26,8 @@ public class test {
         };
         Api apiObject = new Api(baseUrl,"get",path,queryParms,headers);
         RestClient restClient = new RestClient();
-        restClient.sendRequest(apiObject).prettyPrint();
+       JsonPath jsonPath = restClient.convertResponseToJsonPath(restClient.sendRequest(apiObject));
+       System.out.println(jsonPath.prettyPrint());
+
     }
 }
