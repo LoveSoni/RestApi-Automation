@@ -1,7 +1,7 @@
 package apiTests;
 
 import Utilities.Api;
-import io.restassured.RestAssured;
+import Utilities.RestClient;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -11,12 +11,20 @@ public class test {
     @Test
     public void test1(){
         String baseUrl = "https://gorest.co.in";
-        String path = "/users";
+        String path = "/public-api/users";
         Map<String,String> queryParms = new HashMap<String, String>(){
                 {
                     put("first_name","first");
                 }
         };
-        Api apiObject = new Api(baseUrl,"get",path,queryParms,);
+        Map<String,String> headers = new HashMap<String, String>(){
+            {
+                put("content-type","application/json");
+                put("Authorization","Bearer V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzbo");
+            }
+        };
+        Api apiObject = new Api(baseUrl,"get",path,queryParms,headers);
+        RestClient restClient = new RestClient();
+        restClient.sendRequest(apiObject).prettyPrint();
     }
 }
