@@ -2,13 +2,9 @@ package Utilities;
 
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import sun.misc.Request;
-
-import java.util.Map;
-
 /**
  * author Love
  */
@@ -20,10 +16,11 @@ public class RestClient {
     //3. post
     //4. delete
 
-    public void sendRequest(Api api)
+    public Response sendRequest(Api api)
     {
         setBaseUri(api);
-        getRequest(api);
+        RequestSpecification reqest =  getRequest(api);
+        Response respose = getResponse(api,reqest);
     }
 
     public void setBaseUri(Api api){
@@ -31,26 +28,32 @@ public class RestClient {
     }
 
     public RequestSpecification getRequest(Api api){
-        String httpMethod = api.getHttpMethod();
         RequestSpecification request = RestAssured.given().log().all();
         setHeaders(api,request);
         setQueryParams(api,request);
-        if(httpMethod.equalsIgnoreCase("get")){
-            request.get()
-        }else if(httpMethod.equalsIgnoreCase("post")){
+        return request;
+    }
 
+    public Response getResponse(Api api,RequestSpecification request){
+        String httpMethod = api.getHttpMethod();
+        String path = api.getPath();
+        Response response = null;
+        if(httpMethod.equalsIgnoreCase("get")){
+            response = request.get(path);
+        }else if(httpMethod.equalsIgnoreCase("post")){
+            response = request.post(path);
         }
         else if(httpMethod.equalsIgnoreCase("put")){
-
+            response = request.put(path);
         }
         else if(httpMethod.equalsIgnoreCase("del")){
-
+            response = request.delete(path);
         }
-     return request;
+        return response;
     }
 
     public void setHeaders(Api api,RequestSpecification requestSpecification){
-        if(!api.getHeaders().isEmpty(){
+        if(!api.getHeaders().isEmpty()){
             requestSpecification.headers(api.getHeaders());
         }
     }
@@ -59,6 +62,10 @@ public class RestClient {
         if(!api.getQueryParams().isEmpty()){
             requestSpecification.queryParams(api.getQueryParams());
         }
+    }
+
+    public JsonPath convertResponseToJsonPath(Response response){
+          return  response.body().jsonPath();
     }
 
 
