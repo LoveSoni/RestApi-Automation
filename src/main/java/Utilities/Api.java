@@ -1,7 +1,6 @@
 package Utilities;
 
 import org.json.simple.JSONObject;
-
 import java.util.Map;
 
 public class Api {
@@ -17,7 +16,15 @@ public class Api {
 
     private JSONObject requestJson;
 
-    public Api(String baseUrl,String httpMethod,String path, Map<String,String> queryParams, Map<String,String> headers)
+    public Api(JSONObject requestJson,String httpMethod,String baseUrl,String path,Map<String,String> headers){
+        this.httpMethod = httpMethod;
+        this.baseUrl = baseUrl;
+        this.path = path;
+        this.headers = headers;
+        this.requestJson = requestJson;
+    }
+
+    public Api(String httpMethod,String baseUrl,String path, Map<String,String> queryParams, Map<String,String> headers)
     {
         this.baseUrl = baseUrl;
         this.httpMethod = httpMethod;
@@ -26,13 +33,6 @@ public class Api {
         this.headers = headers;
     }
 
-    public Api(String baseUrl,String httpMethod, String path, Map<String,String> headers,JSONObject requestJson){
-        this.baseUrl = baseUrl;
-        this.httpMethod = httpMethod;
-        this.path = path;
-        this.headers = headers;
-        this.requestJson = requestJson;
-    }
 
     public String getHttpMethod() {
         return httpMethod;
@@ -46,15 +46,15 @@ public class Api {
         return baseUrl;
     }
 
-    public String getPath(){
-        return path;
-    }
-
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    public void setPath(String path){
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
         this.path = path;
     }
 

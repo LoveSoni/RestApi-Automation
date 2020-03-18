@@ -32,7 +32,14 @@ public class RestClient {
         RequestSpecification request = RestAssured.given().log().all();
         setHeaders(api,request);
         setQueryParams(api,request);
+        setRequestIfPresent(api,request);
         return request;
+    }
+
+    public void setRequestIfPresent(Api api,RequestSpecification requestSpecification){
+        if(api.getRequestJson()!=null){
+            requestSpecification.body(api.getRequestJson());
+        }
     }
 
     public Response getResponse(Api api,RequestSpecification request){
@@ -60,7 +67,7 @@ public class RestClient {
     }
 
     public void setQueryParams(Api api,RequestSpecification requestSpecification){
-        if(!api.getQueryParams().isEmpty()){
+        if(api.getQueryParams()!=null){
             requestSpecification.queryParams(api.getQueryParams());
         }
     }
