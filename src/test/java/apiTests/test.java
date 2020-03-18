@@ -1,10 +1,12 @@
 package apiTests;
 
 import Utilities.Api;
+import Utilities.ExcelUtility;
 import Utilities.RestClient;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -33,8 +35,15 @@ public class test {
         System.out.println("Limit is :" + jsonPath.get("_meta.rateLimit.limit"));
     }
 
-    @Test
-    public void postRequest() {
+    @DataProvider(name = "getExcelData")
+    public Object[][] getExcelData(){
+        ExcelUtility excelUtility = new ExcelUtility();
+        Object[][] obj = excelUtility.getExcelData();
+        return obj;
+    }
+
+    @Test(dataProvider = "getExcelData")
+    public void postRequest(String email,String first_name,String last_name,String gender) {
         String baseUrl = "https://gorest.co.in";
         String path = "/public-api/users";
         String httpMethod = "post";
@@ -46,10 +55,10 @@ public class test {
             }
         };
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("email", "timd@gmail.com");
-        jsonObject.put("first_name", "firstTime");
-        jsonObject.put("last_name", "lastTime");
-        jsonObject.put("gender", "male");
+        jsonObject.put("email", email);
+        jsonObject.put("first_name", first_name);
+        jsonObject.put("last_name", last_name);
+        jsonObject.put("gender", gender);
         Api api =new Api(jsonObject,httpMethod,baseUrl,path,headers);
         RestClient restClient = new RestClient();
         Response response = restClient.sendRequest(api);
