@@ -21,10 +21,11 @@ public class BasicAuth {
     public void hit() throws Exception{
         String baesUri = "";
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope("http://httpbin.org/",80),new UsernamePasswordCredentials("user","passwd"));
+        credentialsProvider.setCredentials(new AuthScope("httpbin.org",80),new UsernamePasswordCredentials("user","passwd"));
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultCredentialsProvider(credentialsProvider).build();
         HttpGet httpGet = new HttpGet("http://httpbin.org/basic-auth/user/passwd");
         HttpResponse httpResponse = httpClient.execute(httpGet);
+        System.out.println(httpResponse.getStatusLine().getStatusCode());
         System.out.println(EntityUtils.toString(httpResponse.getEntity()));
     }
 }
