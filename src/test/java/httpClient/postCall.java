@@ -1,5 +1,6 @@
 package httpClient;
 
+import com.jayway.jsonpath.JsonPath;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -9,10 +10,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.FileReader;
-
 public class postCall {
 
     @Test
@@ -28,6 +27,9 @@ public class postCall {
         httpPost.addHeader("content-type","application/json");
         httpPost.setEntity(new StringEntity(jsonObject.toString()));
         HttpResponse httpResponse = httpClient.execute(httpPost);
+        String stringResponse = httpResponse.getEntity().toString();
+        jsonObject = (JSONObject)jsonParser.parse(stringResponse);
+        System.out.println("String Response :"+jsonObject);
         System.out.println(EntityUtils.toString(httpResponse.getEntity()));
     }
 }
