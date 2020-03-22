@@ -29,7 +29,7 @@ public class getCall {
         System.out.println("Base url is :"+baseUrl);
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(baseUrl);
-        httpGet.addHeader("Authorization","Bearer V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzbo");
+        httpGet.addHeader("Authorization","Bearer V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzb");
         HttpResponse response = httpClient.execute(httpGet);
         System.out.println(EntityUtils.toString(response.getEntity()));
     }
