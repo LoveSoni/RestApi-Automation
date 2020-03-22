@@ -19,7 +19,7 @@ public class OauthApi {
         OAuthConsumer oAuthConsumer = new CommonsHttpOAuthConsumer(consumerKey,consumerSecret);
         oAuthConsumer.setTokenWithSecret(accessToken,accessToken);
         CloseableHttpClient httpClient =HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost("https://api.twitter.com/1.1/statuses/update.json?status=Naveen");
+        HttpPost httpPost = new HttpPost("");
         oAuthConsumer.sign(httpPost);
         HttpResponse httpResponse = httpClient.execute(httpPost);
         System.out.println("Response is :"+EntityUtils.toString(httpResponse.getEntity()));
