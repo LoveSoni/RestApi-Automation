@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Rest API Test Suite" verbose="1" parallel="tests"
+       thread-count="3">
+
+    <listeners>
+        <!-- <listener class-name="com.qa.api.gorest.listeners.ExtentReportListener"
+            /> <listener class-name="com.qa.api.gorest.listeners.AllureReportListener"
+            /> -->
+        <listener class-name="listeners.ExtentReportListener" />
+    </listeners>
+
+    <test name="Rest API regression Test" parallel="classes"
+          thread-count="3">
+        <classes>
+            <class name="apiTests.test" />
+            <class name="authentications.AuthApis" />
+            <class name="getApis.GetBDDApi" />
+            <class name="jsonUtility.JsonPath" />
+            <class name="pojo.PostWithPojo" />
+            <class name="putDelApis.DelApi" />
+        </classes>
+    </test>
+</suite>
