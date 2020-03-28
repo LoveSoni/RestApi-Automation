@@ -1,6 +1,7 @@
 package pojoToJson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jsonToPOJO.Student;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
