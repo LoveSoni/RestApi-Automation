@@ -10,6 +10,7 @@ import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
 
 public class OauthApi {
+
     @Test
     public void hit() throws  Exception{
         String consumerKey = "";
@@ -24,4 +25,6 @@ public class OauthApi {
         HttpResponse httpResponse = httpClient.execute(httpPost);
         System.out.println("Response is :"+EntityUtils.toString(httpResponse.getEntity()));
     }
+
+
 }
